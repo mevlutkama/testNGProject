@@ -12,7 +12,7 @@ public class OpenSourcePage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    // public WebElemen username = driver,findElement(By.xpath = "//input[@name='username']")); Traditional
+    // public WebElement username = driver,findElement(By.xpath = "//input[@name='username']")); Traditional
     @FindBy(xpath = "//input[@name='username']")
     public WebElement userName;
 

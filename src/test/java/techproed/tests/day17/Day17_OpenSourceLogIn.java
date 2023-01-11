@@ -25,5 +25,6 @@ public class Day17_OpenSourceLogIn {
         openSourcePage.userName.sendKeys("Admin");
         openSourcePage.password.sendKeys("admin123");
         openSourcePage.submitButton.click();
+        Driver.closeDriver();
     }
 }
