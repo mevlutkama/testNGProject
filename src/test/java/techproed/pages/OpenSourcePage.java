@@ -8,7 +8,7 @@ import techproed.utilities.Driver;
 public class OpenSourcePage {
 
     public OpenSourcePage(){
-        // Used to initiate the page objects
+        // Used to instantiate the page objects
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
