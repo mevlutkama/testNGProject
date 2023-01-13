@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
+import techproed.pages.XYZBankCustomerPage;
+import techproed.pages.XYZBankManagerPage;
 import techproed.pages.XYZBankPage;
 import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
@@ -105,17 +107,18 @@ public class XYZBankTest {
         xyzBankPage.bankManagerLoginButton.click();
 
         // Click on "Add Customer" button
-        xyzBankPage.addCustomerButton.click();
+        XYZBankManagerPage xyzBankManagerPage = new XYZBankManagerPage();
+        xyzBankManagerPage.addCustomerButton.click();
 
         // Fill inputs and click on "Add Customer" submit button
         Faker faker = new Faker();
 
         for (int i=0; i<5; i++){
 
-            xyzBankPage.firstNameInput.sendKeys(faker.name().firstName());
-            xyzBankPage.lastNameInput.sendKeys(faker.name().lastName());
-            xyzBankPage.postCodeInput.sendKeys(faker.address().zipCode());
-            xyzBankPage.addCustomerSubmitButton.click();
+            xyzBankManagerPage.firstNameInput.sendKeys(faker.name().firstName());
+            xyzBankManagerPage.lastNameInput.sendKeys(faker.name().lastName());
+            xyzBankManagerPage.postCodeInput.sendKeys(faker.address().zipCode());
+            xyzBankManagerPage.addCustomerSubmitButton.click();
 
             // Accept alert
             try {
@@ -127,22 +130,22 @@ public class XYZBankTest {
         }
 
         // Click on "Open Account"  button
-        xyzBankPage.openAccountButton.click();
+        xyzBankManagerPage.openAccountButton.click();
 
         // Click on "Customer" dropdown
         // Select customer name
-        Select customerDd = new Select(xyzBankPage.customerDropdown);
-        Select currencyDd = new Select(xyzBankPage.currencyDropdown);
+        Select customerDd = new Select(xyzBankManagerPage.customerDropdown);
+        Select currencyDd = new Select(xyzBankManagerPage.currencyDropdown);
 
         for (int i=6; i<11; i++){
             // Click on "Currency" dropdown
-            customerDd.selectByIndex(6);
+            customerDd.selectByIndex(i);
 
             // Select "Dollar"
             currencyDd.selectByIndex(1);
 
             // Click on "Process" button
-            xyzBankPage.processButton.click();
+            xyzBankManagerPage.processButton.click();
 
             // Accept alert
             try {
@@ -155,76 +158,76 @@ public class XYZBankTest {
         }
 
         // Click on "Customers" button
-        xyzBankPage.customersButton.click();
+        xyzBankManagerPage.customersButton.click();
 
         // Count table row numbers
-        int numberOfCustomerRows = xyzBankPage.numberOfCustomerRows.size();
+        int numberOfCustomerRows = xyzBankManagerPage.numberOfCustomerRows.size();
 
         // Assert that you created 5 customers
         assertEquals(10,numberOfCustomerRows);
 
         // Click on "Home" button
-        xyzBankPage.homeButton.click();
+        xyzBankManagerPage.homeButton.click();
 
         // Click on "Customer Login" button
         xyzBankPage.customerLoginButton.click();
 
         // Select any name you created
-        Select yourNameDd = new Select(xyzBankPage.yourNameDropdown);
+        XYZBankCustomerPage xyzBankCustomerPage = new XYZBankCustomerPage();
+        Select yourNameDd = new Select(xyzBankCustomerPage.yourNameDropdown);
         yourNameDd.selectByIndex(9);
 
         // Click on "Login" button
-        xyzBankPage.loginButton.click();
+        xyzBankCustomerPage.loginButton.click();
 
         // Click on "Deposit" button
-        // xyzBankPage.depositButton.click();
-        JSUtils.clickElementByJS(xyzBankPage.depositButton);
+        xyzBankCustomerPage.depositButton.click();
 
         // Type 100 into "Amount to be Deposited" input
-        xyzBankPage.depositAmountInput.sendKeys("100");
+        xyzBankCustomerPage.depositAmountInput.sendKeys("100");
 
         // Click on "Deposit"(Submit) button
-        // xyzBankPage.depositSubmitButton.click();
-        // JSUtils.clickElementByJS(xyzBankPage.depositSubmitButton);
-        Actions actions = new Actions(Driver.getDriver());
-        actions.click(xyzBankPage.depositSubmitButton);
+        xyzBankCustomerPage.depositSubmitButton.click();
+        ReusableMethods.waitFor(2);
 
         // Assert that "Deposit Successful" is displayed\
-        assertTrue(xyzBankPage.depositSuccessfulMessage.getText().contains("Deposit Successful"));
+        ReusableMethods.verifyElementDisplayed(xyzBankCustomerPage.depositSuccessfulMessage);
 
         // Click on "Withdrawal" button
-        xyzBankPage.withdrawalButton.click();
+        xyzBankCustomerPage.withdrawalButton.click();
+        ReusableMethods.waitFor(2);
 
         // Type 100 into "Amount to be Withdrawn" input
-        xyzBankPage.withdrawalAmountInput.sendKeys("100");
+        xyzBankCustomerPage.withdrawalAmountInput.sendKeys("100");
+        ReusableMethods.waitFor(2);
 
         // Click on "Withdraw"(Submit) button
-        // xyzBankPage.withdrawSubmitButton.click();
-        actions.click(xyzBankPage.withdrawSubmitButton);
+        xyzBankCustomerPage.withdrawSubmitButton.click();
+        ReusableMethods.waitFor(4);
 
         // Assert that "Transaction  Successful" is displayed
-        ReusableMethods.verifyElementDisplayed(xyzBankPage.transactionSuccessfulMessage);
+        ReusableMethods.verifyElementDisplayed(xyzBankCustomerPage.transactionSuccessfulMessage);
 
         // Click on "Logout" button
-        xyzBankPage.logOutButton.click();
+        xyzBankCustomerPage.logOutButton.click();
 
         // Click on "Home" button
-        xyzBankPage.homeButton.click();
+        xyzBankManagerPage.homeButton.click();
 
         // Click on "Bank Manager Login" button
         xyzBankPage.bankManagerLoginButton.click();
 
         // Click on "Customers" button
-        xyzBankPage.customersButton.click();
+        xyzBankManagerPage.customersButton.click();
 
         // Click on each "Delete" button
-        for (WebElement w : xyzBankPage.deleteButtonList){
+        for (WebElement w : xyzBankManagerPage.deleteButtonList){
             w.click();
         }
 
         // Count table row numbers
         // Assert that number of customers is 0
-        assertEquals(0, xyzBankPage.deleteButtonList.size());
+        assertEquals(0, xyzBankManagerPage.deleteButtonList.size());
 
         Driver.closeDriver();
     }
