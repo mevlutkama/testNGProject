@@ -1,6 +1,5 @@
 package techproed.tests.smoketest.logintests;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import techproed.pages.HomePage;
 import techproed.pages.LoginPage;

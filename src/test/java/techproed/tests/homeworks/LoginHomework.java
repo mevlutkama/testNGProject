@@ -1,6 +1,5 @@
 package techproed.tests.homeworks;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import techproed.pages.TestHomePage;
 import techproed.pages.TestLoginPage;

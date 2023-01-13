@@ -2,7 +2,6 @@ package techproed.tests.practices;
 
 import com.github.javafaker.Faker;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 import techproed.pages.XYZBankCustomerPage;
@@ -10,7 +9,6 @@ import techproed.pages.XYZBankManagerPage;
 import techproed.pages.XYZBankPage;
 import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
-import techproed.utilities.JSUtils;
 import techproed.utilities.ReusableMethods;
 
 import static org.testng.AssertJUnit.assertEquals;
