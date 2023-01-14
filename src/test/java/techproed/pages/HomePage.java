@@ -18,4 +18,29 @@ public class HomePage {
     @FindBy(id = "dropdown-basic-button")
     public WebElement userId;
 
+    @FindBy(xpath = "//select[@name='car']")
+    public WebElement selectACar;
+
+    @FindBy(name = "pickUpLocation")
+    public WebElement pickUpLocation;
+
+    @FindBy(name = "dropOfLocation")
+    public WebElement dropOfLocation;
+
+    @FindBy(name = "pickUpDate")
+    public WebElement pickUpDate;
+
+    @FindBy(name = "pickUpTime")
+    public WebElement pickUpTime;
+
+    @FindBy(name = "dropOffDate")
+    public WebElement dropOffDate;
+
+    @FindBy(name = "dropOffTime")
+    public WebElement dropOffTime;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement continueReservationButton;
+
+
 }
