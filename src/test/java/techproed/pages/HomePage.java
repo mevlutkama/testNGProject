@@ -42,5 +42,9 @@ public class HomePage {
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement continueReservationButton;
 
+    @FindBy(linkText = "Logout")
+    public WebElement logoutLink;
 
+    @FindBy(xpath = "//button[text()='OK']")
+    public WebElement OK;
 }
