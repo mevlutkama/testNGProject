@@ -1,4 +1,4 @@
-package techproed.tests.day20;
+package techproed.tests.excelautomation;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
@@ -27,7 +27,7 @@ public class Day20_ExcelLogin {
         Driver.getDriver().get(ConfigReader.getProperty("app_home_url"));
         homePage = new HomePage();
         loginPage = new LoginPage();
-        ReusableMethods.waitFor(2);
+        ReusableMethods.waitFor(1);
 
         try {
             homePage.homePageLoginLink.click();
@@ -45,11 +45,47 @@ public class Day20_ExcelLogin {
             homePage.homePageLoginLink.click();
             ReusableMethods.waitFor(1);
         }catch (Exception e){
-
         }
         ReusableMethods.waitFor(1);
+    }
 
-        /*     LOGIN FLOW
+    @Test
+    public void customerLoginTest(){
+        String path = "./src/test/java/resources/mysmoketestdata.xlsx";
+        String sheetName = "customer_info";
+        excelUtils = new ExcelUtils(path,sheetName);
+
+        // getDataList() method returns all excel data
+        // We stored that data in allTestData variable
+        allTestData = excelUtils.getDataList();
+        // System.out.println(allTestData);
+        // System.out.println(excelUtils.getColumnsNames());
+        // System.out.println(excelUtils.getCellData(2,1));
+
+        // Using loop get the values from the map and send in the UI
+        for (Map<String,String> eachData : allTestData){
+            // Takes us to the login page
+            login();
+            loginPage.username.sendKeys(eachData.get("username"));
+            ReusableMethods.waitFor(1);
+            loginPage.password.sendKeys(eachData.get("password"));
+            ReusableMethods.waitFor(1);
+            loginPage.loginButton.click();
+            ReusableMethods.waitFor(1);
+
+            // Verify if login is successfull
+            // If user id is displayed then login is successful
+            ReusableMethods.verifyElementDisplayed(homePage.userId);
+        }
+    }
+
+    @AfterMethod
+    public void tearDown(){
+        Driver.closeDriver();
+    }
+}
+ /*     LOGIN FLOW
+
         click on login LINK          ------>>>>>>  homePage.homePageLoginLink.click(); --->> TRY WHEN LINK IS THERE---> 1st TRY CATCH--> logIn
         send username
         send password                 ----->>>>> DONE
@@ -78,41 +114,3 @@ public class Day20_ExcelLogin {
         click on login Button
         I AM ON HOME PAGE AGAIN
  */
-
-    }
-
-    @Test
-    public void customerLoginTest(){
-        String path = "./src/test/java/resources/mysmoketestdata.xlsx";
-        String sheetName = "customer_info";
-        excelUtils = new ExcelUtils(path,sheetName);
-
-        // getDataList() method returns all excel data
-        // We stored that data in allTestData variable
-        allTestData = excelUtils.getDataList();
-        // System.out.println(allTestData);
-        // System.out.println(excelUtils.getColumnsNames());
-        // System.out.println(excelUtils.getCellData(2,1));
-
-        // Using loop get the values from the map and send in the UI
-        for (Map<String,String> eachdata : allTestData){
-            // Takes us to the login page
-            login();
-            loginPage.username.sendKeys(eachdata.get("username"));
-            ReusableMethods.waitFor(1);
-            loginPage.password.sendKeys(eachdata.get("password"));
-            ReusableMethods.waitFor(1);
-            loginPage.loginButton.click();
-            ReusableMethods.waitFor(1);
-
-            // Verify if login is successfull
-            // If user id is displayed then login is successful
-            ReusableMethods.verifyElementDisplayed(homePage.userId);
-        }
-    }
-
-    @AfterMethod
-    public void tearDown(){
-        Driver.closeDriver();
-    }
-}
