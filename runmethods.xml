@@ -1,0 +1,22 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Blue Rental Car Project" verbose="1" >
+<test name="Run Methods" preserve-order="true">
+    <classes>
+        <class name="techproed.tests.day16.Day16_Annotations">
+            <methods>
+
+                <!-- Run only test1 and test6 from Day16_Annotations -->
+                <include name="test1" />
+                <include name="test6" />
+            </methods>
+        </class>
+
+        <class name="techproed.tests.smoketest.logintests.Day18_PositiveLoginTest">
+            <methods>
+                <!-- Run all but US100208_Negative_Login from Day18_PositiveLoginTest -->
+                <exclude name="US100208_Negative_Login" />
+            </methods>
+        </class>
+    </classes>
+</test>
+</suite>
