@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Blue Rental Car Project" verbose="1">
+    <!-- listener tag is used to addd Listeners -->
+    <listeners>
+        <!-- Path of the listener utility class -->
+        <listener class-name="techproed.utilities.Listeners"></listener>
+    </listeners>
+    <test name="Login Test Classes" >
+        <classes>
+            <!-- Running ListenersTest2 Class -->
+            <class name="techproed.tests.listeners.ListenersTest2" />
+        </classes>
+    </test>
+</suite>

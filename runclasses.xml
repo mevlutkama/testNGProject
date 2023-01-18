@@ -1,5 +1,4 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-
 <suite name="Blue Rental Car Project" verbose="1" >
     <test name="Login Test Classes" >
         <classes>
