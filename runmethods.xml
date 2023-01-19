@@ -4,17 +4,16 @@
     <classes>
         <class name="techproed.tests.day16.Day16_Annotations">
             <methods>
-
                 <!-- Run only test1 and test6 from Day16_Annotations -->
                 <include name="test1" />
                 <include name="test6" />
             </methods>
         </class>
 
-        <class name="techproed.tests.smoketest.logintests.Day18_PositiveLoginTest">
+        <class name="techproed.tests.smoketest.logintests.Day19_NegativeLoginTest">
             <methods>
-                <!-- Run all but US100208_Negative_Login from Day18_PositiveLoginTest -->
-                <exclude name="US100208_Negative_Login" />
+                <!-- Run all but US100208_Negative_Login from Day19_NegativeLoginTest -->
+                <exclude name="US100208_Negative_Login" /> <!--This will run whole Day19_NegativeLoginTest class methods except US100208_Negative_Login -->
             </methods>
         </class>
     </classes>

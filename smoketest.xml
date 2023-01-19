@@ -2,8 +2,8 @@
 <suite name="My Blue Rental Car Project" verbose="1" >
     <test name="Smoke Test"   >
         <packages>
-            <package name="techproed.tests.smoketest.logintests" />
-            <package name="techproed.tests.smoketest.reservationtests" />
+            <package name="techproed.tests.smoketest.logintests" /> <!-- This will run "logintests" package -->
+            <package name="techproed.tests.smoketest.reservationtests" /> <!-- This will run "reservation" package -->
         </packages>
     </test>
 </suite>
