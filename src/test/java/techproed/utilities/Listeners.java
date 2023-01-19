@@ -9,7 +9,7 @@ public class Listeners implements ITestListener {
     /*
         ITestListener is an interface
         We use this interface to customize testNG framework
-        inStart, onFinish, onTestStart, onTestFinish, onTestSuccess, onTestFailure are special method names are used to listen the test methods.
+        onStart, onFinish, onTestStart, onTestFinish, onTestSuccess, onTestFailure are special method names are used to listen the test methods.
         We especially use listeners for adding a special condition such as test pass, fail or skipped
      */
 
