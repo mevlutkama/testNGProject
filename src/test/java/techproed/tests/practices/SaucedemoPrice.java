@@ -26,7 +26,7 @@ public class SaucedemoPrice {
         Flash each web element you used
      */
 
-    @Test
+    @Test(groups = "smoke-test")
     public void totalPrice() {
 
         // Go to  https://www.saucedemo.com/

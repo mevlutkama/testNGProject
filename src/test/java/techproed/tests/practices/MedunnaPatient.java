@@ -52,7 +52,7 @@ public class MedunnaPatient {
        return arr;
    }
 
-    @Test(dataProvider = "medunnaCredentials")
+    @Test(dataProvider = "medunnaCredentials", groups = "smoke-test")
     public void createPatientTest(String username, String password, String pFirstname, String pLastname, String pEmail, String pPhoneNumber){
 
         // Go to https://medunna.com/
@@ -93,18 +93,22 @@ public class MedunnaPatient {
 
         // Enter "Last name" into "Last Name" input
         medunnaPatientsPage.patientLastNameInput.sendKeys(pLastname);
+
         // Enter email into "Email" input
         medunnaPatientsPage.patientEmailInput.sendKeys(pEmail);
+
         // Enter phone number into "Phone" input
         medunnaPatientsPage.patientPhoneInput.sendKeys(pPhoneNumber);
+
         // Click on "Save" button
         JSUtils.clickElementByJS(medunnaPatientsPage.saveButton);
+
+        Driver.closeDriver();
    }
 
-   @AfterMethod
-    public void closeBrowser(){
-       ReusableMethods.waitFor(2);
-       Driver.closeDriver();
-   }
-
+//   @AfterMethod
+//    public void closeBrowser(){
+//       ReusableMethods.waitFor(2);
+//       Driver.closeDriver();
+//   }
 }

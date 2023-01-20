@@ -13,7 +13,6 @@ public class SaucedemoProductsPage {
 
         PageFactory.initElements(Driver.getDriver(),this);
     }
-
     @FindBy(xpath = "//div[@class='inventory_item_price']")
     public List<WebElement> prices;
 }

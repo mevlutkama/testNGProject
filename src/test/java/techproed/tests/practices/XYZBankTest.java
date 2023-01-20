@@ -94,7 +94,7 @@ public class XYZBankTest {
             Assert that number of customers is 0
         */
 
-    @Test
+    @Test(groups = "smoke-test")
     public void xyzBankTest(){
 
         XYZBankPage xyzBankPage = new XYZBankPage();
