@@ -29,7 +29,7 @@ public class ListenersTest3 {
         // sending credentials and clicking on login button
         loginPage.username.sendKeys("jack@gmail.com");
         ReusableMethods.waitFor(2);
-        loginPage.password.sendKeys("12345");
+        loginPage.password.sendKeys("123456");// sending incorrect credential
         ReusableMethods.waitFor(2);
         loginPage.loginButton.click();
         ReusableMethods.waitFor(2);
