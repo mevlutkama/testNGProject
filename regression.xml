@@ -1,5 +1,10 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite name="My Blue Rental Car Project" verbose="1" >
+
+    <listeners>
+        <listener class-name="techproed.utilities.ListenersRetryAnalyzer"></listener>
+    </listeners>
+
     <test name="Regression Test"   >
         <packages>
             <!-- run all packages that has @Test annotation -->
