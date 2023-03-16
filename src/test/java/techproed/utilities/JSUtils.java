@@ -1,7 +1,6 @@
 package techproed.utilities;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-
 public class JSUtils {
 
     // This method will takes two parameter: WebElement, and WebDriver
